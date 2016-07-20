@@ -28,6 +28,6 @@ $tokens = array(
 //2
 The *codesend* executable requires ample permissions to run. If you run into issues, use the following (per Sam Kear). Similarly, the *outletState.json* file needs to be writable:
 
-sudo chown root.root codesend
-sudo chmod 4755 codesend
-sudo chmod 4777 outletState.json
+- sudo chown root.root codesend
+- sudo chmod 4755 codesend
+- sudo chmod 4777 outletState.json
