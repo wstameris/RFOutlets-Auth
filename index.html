@@ -2,96 +2,109 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RF Outlets</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <style>
-    body {
-      padding-top: 70px
-    }
-  </style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Home Control</title>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="scripts.js"></script>
 </head>
 
-<body>
-  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href=".">RF Outlets</a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container">
-    <label>1</label>
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="1" data-outletStatus="on" class="btn btn-default toggleOutlet">On</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="1" data-outletStatus="off" class="btn btn-default toggleOutlet">Off</button>
-      </div>
-    </div>
-
-    <label>2</label>
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="2" data-outletStatus="on" class="btn btn-default toggleOutlet">On</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="2" data-outletStatus="off" class="btn btn-default toggleOutlet">Off</button>
-      </div>
-    </div>
-
-    <label>3</label>
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="3" data-outletStatus="on" class="btn btn-default toggleOutlet">On</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="3" data-outletStatus="off" class="btn btn-default toggleOutlet">Off</button>
-      </div>
-    </div>
-
-    <label>4</label>
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="4" data-outletStatus="on" class="btn btn-default toggleOutlet">On</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="4" data-outletStatus="off" class="btn btn-default toggleOutlet">Off</button>
-      </div>
-    </div>
-
-    <label>5</label>
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="5" data-outletStatus="on" class="btn btn-default toggleOutlet">On</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="5" data-outletStatus="off" class="btn btn-default toggleOutlet">Off</button>
-      </div>
-    </div>
-    <label>All</label>
-    <div class="btn-group btn-group-justified" role="group" aria-label="...">
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="6" data-outletStatus="on" class="btn btn-default toggleOutlet">On</button>
-      </div>
-      <div class="btn-group" role="group">
-        <button type="button" data-outletId="6" data-outletStatus="off" class="btn btn-default toggleOutlet">Off</button>
-      </div>
-    </div>
-  </div>
+<body onload="statusCheck()">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header"> <img src="images/favicon-32x32.png" alt="icon" id="icon">
+				<p class="navbar-brand" id="title">Home Control</p>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav"></ul>
+				<ul class="nav navbar-nav navbar-right"></ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container" id="buttonContainer">
+		<div class="outlet"> <img class="buttonImage" alt="Lamp" src="images/lamp.png" />
+			<label class="fullLabel">Lamp</label>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" data-outletId="1" data-outletStatus="on" id="1on" class="btn btn-default toggleOutlet">   On   </button>
+				<button type="button" data-outletId="1" data-outletStatus="off" id="1off" class="btn btn-primary toggleOutlet">   Off   </button>
+			</div>
+		</div>
+		<hr>
+		<div class="outlet"> <img class="buttonImage" alt="LED" src="images/led.png" />
+			<label class="fullLabel">Light Strip</label>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" data-outletId="2" data-outletStatus="on" id="2on" class="btn btn-default toggleOutlet">   On   </button>
+				<button type="button" data-outletId="2" data-outletStatus="off" id="2off" class="btn btn-primary toggleOutlet">   Off   </button>
+			</div>
+		</div>
+		<hr>
+		<div class="outlet"> <img class="buttonImage" alt="Computer monitor" src="images/monitor.png" />
+			<label class="fullLabel">Monitors </label>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" data-outletId="3" data-outletStatus="on" id="3on" class="btn btn-default toggleOutlet">   On   </button>
+				<button type="button" data-outletId="3" data-outletStatus="off" id="3off" class="btn btn-primary toggleOutlet">   Off   </button>
+			</div>
+		</div>
+		<hr>
+		<div class="outlet">
+			<label class="fullLabel"></label>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" data-outletId="4" data-outletStatus="on" id="4on" class="btn btn-default toggleOutlet">   On   </button>
+				<button type="button" data-outletId="4" data-outletStatus="off" id="4off" class="btn btn-primary toggleOutlet">   Off   </button>
+			</div>
+		</div>
+		<hr>
+		<div class="outlet">
+			<label class="fullLabel"></label>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" data-outletId="5" data-outletStatus="on" id="5on" class="btn btn-default toggleOutlet">   On   </button>
+				<button type="button" data-outletId="5" data-outletStatus="off" id="5off" class="btn btn-primary toggleOutlet">   Off   </button>
+			</div>
+		</div>
+		<hr>
+		<div class="outlet">
+			<label class="fullLabel"></label>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" data-outletId="6" data-outletStatus="on" id="6on" class="btn btn-default toggleOutlet">   On   </button>
+				<button type="button" data-outletId="6" data-outletStatus="off" id="6off" class="btn btn-primary toggleOutlet">   Off   </button>
+			</div>
+		</div>
+		<hr>
+		<div class="outlet">
+			<label class="fullLabel"></label>
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" data-outletId="7" data-outletStatus="on" id="7on" class="btn btn-default toggleOutlet">   On   </button>
+				<button type="button" data-outletId="7" data-outletStatus="off" id="7off" class="btn btn-primary toggleOutlet">   Off   </button>
+			</div>
+		</div>
+		<div id="footer">
+			<div style="text-align: center" class="outletLabels">
+				<label class=nameLabel>All Outlets</label>
+			</div>
+			<div class="btn-group btn-group-justified" role="group" aria-label="...">
+				<div class="btn-group" role="group">
+					<button type="button" data-outletId="8" data-outletStatus="on" class="btn btn-success toggleOutlet">   On   </button>
+				</div>
+				<div class="btn-group" role="group">
+					<button type="button" data-outletId="8" data-outletStatus="off" class="btn btn-danger toggleOutlet">   Off   </button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
-<script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="script.js"></script>
 
 </html>
