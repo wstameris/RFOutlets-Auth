@@ -15,7 +15,7 @@ Additions
 Notes:
 
 //1
-Be sure to include a *auth.php* file which contains your authorization tokens, similar to the following. The character strings should contain  
+Be sure to include a *auth.php* file which contains your authorization tokens, similar to the following.
 
 <?php
 $tokens = array(
